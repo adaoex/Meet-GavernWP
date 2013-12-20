@@ -54,7 +54,7 @@
 				"name": "fb_like_show_faces",
 				"type": "Select",
 				"label": "Exibir rostos sob o botão 'Curtir'",
-				"tooltip": "Habilitar/Desabilitar a exibição de rostos sob o botão gostar.",
+				"tooltip": "Habilitar/Desabilitar a exibição de rostos sob o botão Curtir.",
 				"default": "true",
 				"visibility": "fb_like=Y",
 				"other": {
@@ -81,8 +81,8 @@
 				"visibility": "fb_like=Y",
 				"other": {
 					"options": {
-						"like": "gostar",
-						"recommend": "recomendado"
+						"like": "Curtir",
+						"recommend": "Recomendar"
 					}
 				}
 			},
