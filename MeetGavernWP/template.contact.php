@@ -138,19 +138,24 @@ if(isset($_POST['message-send'])) {
 		$body .= "</html>";
 		
 		if($params_name && $params_email) {
-			$headers = 'From: '.$output['name'].' <'.$output['email'].'>' . "\r\n" . 'Reply-To: ' . $output['email'] . "\r\n" . 'Content-type: text/html' . "\r\n";
+			$headers[] = 'From: '.$output['name'].' <'.$output['email'].'>';
+			$headers[] = 'Reply-To: ' . $output['email'];
+			$headers[] = 'Content-type: text/html';
 		} else if($params_name && !$params_email) {
-			$headers = 'From: '.$output['name']. "\r\n" . 'Content-type: text/html' . "\r\n";
+			$headers[] = 'From: '.$output['name'];
+			$headers[] = 'Content-type: text/html';
 		} else if(!$params_name && $params_email) {
-			$headers = 'From: '.$output['email'].' <'.$output['email'].'>' . "\r\n" . 'Reply-To: ' . $output['email'] . "\r\n" . 'Content-type: text/html' . "\r\n";
+			$headers[] = 'From: '.$output['email'].' <'.$output['email'].'>';
+			$headers[] = 'Reply-To: ' . $output['email'];
+			$headers[] = 'Content-type: text/html';
 		} else {
-			$headers = 'Content-type: text/html' . "\r\n";
+			$headers[] = 'Content-type: text/html';
 		}
 
-		mail($email, $subject, $body, $headers);
+		wp_mail($email, $subject, $body, $headers);
 		
 		if($params_copy && $params_email && isset($_POST['send_copy'])) {
-			mail($output['email'], $subject, $body, $headers);
+			wp_mail($output['email'], $subject, $body, $headers);
 		}
 		
 		$messageSent = true;
