@@ -44,7 +44,7 @@ if(isset($_COOKIE[GKTPLNAME . '_active_tab']) && is_numeric($_COOKIE[GKTPLNAME .
 		<ul id="gkTabs">
 		<?php foreach($tabs as $tab) : ?>
 			<?php if($tab[2] == 'enabled') : ?>
-			<li<?php echo ($tabsIterator == $activeTab) ? ' class="'.str_replace(' ', '', strtolower($tab[0])).' active"' : ' class="'.str_replace(' ', '', strtolower($tab[0])).'"'; ?> title="<?php echo $tab[0]; ?>"><?php echo $tab[3]; ?></li>
+			<li<?php echo ($tabsIterator == $activeTab) ? ' class="'.str_replace(' ', '', strtolower($tab[0])).' active"' : ' class="'.str_replace(' ', '', strtolower($tab[0])).'"'; ?> title="<?php echo $tab[0]; ?>"><?php echo (array_key_exists(3, $tab) ? $tab[3] : $tab[0]); ?></li>
 			<?php 
 				$tabsIterator++;
 				endif; 
